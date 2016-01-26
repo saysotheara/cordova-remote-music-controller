@@ -75,34 +75,6 @@ MusicControls.subscribe(events);
 MusicControls.listen();
 ```
 
-## iOS specific
-
-Modify the MainViewController.m with these functions:
-
-```
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    // Do any additional setup after loading the view from its nib.
-    [[RemoteControls remoteControls] setWebView:self.webView];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    // Turn off remote control event delivery
-    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-}
-
-//add this function
-- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
-       [[RemoteControls remoteControls] receiveRemoteEvent:receivedEvent];
-   }
-```
-
 ## RemoteControls License
 
 The MIT License
